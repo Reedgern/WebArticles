@@ -5,7 +5,7 @@ import {Form} from "../ArticleForm/ArticleForm";
 const ArticleData = (props) => {
     return (
         <div>
-            <h1>{props.isOwner && <button onClick={props.goToEditMode}>Do it now</button>}</h1>
+            <h1>{props.isOwner && <button onClick={props.goToEditMode}>Edit</button>}</h1>
             Title: {props.article.title}
             Content: {props.article.content}
             User: {props.article.user.username}

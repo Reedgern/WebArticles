@@ -3,12 +3,14 @@ import {Field, reduxForm} from "redux-form";
 import {setArticlesAC} from "../../../redux/articlesReducer";
 import {connect} from "react-redux";
 import {articleAPI} from "../../../api/api";
+import {Input, Textarea} from "../../common/FormControls/FormControls";
+import {reqiuredField} from "../../../validators/validators";
 
 export const Form = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component='input' name='title' placeholder={'Title'}/>
-            <Field component='input' name='content' placeholder={'Content'}/>
+            <Field component={Input} name='title' placeholder={'Title'} validate={[reqiuredField]}/>
+            <Field component={Textarea} name='content' placeholder={'Content'} validate={[reqiuredField]}/>
             <button>Add article</button>
         </form>
     );

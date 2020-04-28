@@ -13,7 +13,7 @@ const Articles = (props) => {
                     Title:{a.title}
                     User:{a.user.username}
                     <NavLink to={`/article/${a.id}`}>To article</NavLink>
-                    {props.currentUser === a.user.username ? <button onClick={(e) => props.deleteArticle(a.id)}>Delete this</button> : ''}
+                    {props.currentUser === a.user.username ? <button onClick={(e) => props.deleteArticle(a.id)}>Delete</button> : ''}
                 </div>
         );
     });
