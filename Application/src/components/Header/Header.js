@@ -3,20 +3,25 @@ import {NavLink} from "react-router-dom";
 import {authAPI} from "../../api/api";
 import {setUserAC} from "../../redux/appReducer";
 import {connect} from "react-redux";
+import style from './Header.module.css';
 
 const Header = (props) => {
     return (
         <div>
-            {props.isAuth ?
-                <div>
-                    {props.username}
-                    <button onClick={props.logout}>Logout</button>
-                    <NavLink to={'/articles'}>Articles</NavLink>
-                </div> :
-                <div>
-                    <NavLink to={'/signin'}>Sign In</NavLink>
-                    <NavLink to={'/signup'}>Sign Up</NavLink>
-                </div>}
+            <NavLink to={'/articles'}>Articles</NavLink>
+            <div className={style.loginBlock}>
+                {props.isAuth ?
+                    <div>
+                        {props.username}
+                        <br/>
+                        <button onClick={props.logout}>Logout</button>
+                    </div> :
+                    <div>
+                        <NavLink to={'/signin'}>Sign In</NavLink>
+                        <br/>
+                        <NavLink to={'/signup'}>Sign Up</NavLink>
+                    </div>}
+            </div>
         </div>
     );
 }

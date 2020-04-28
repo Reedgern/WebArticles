@@ -11,7 +11,7 @@ export const Form = (props) => {
         <form onSubmit={props.handleSubmit}>
             <Field component={Input} name='title' placeholder={'Title'} validate={[reqiuredField]}/>
             <Field component={Textarea} name='content' placeholder={'Content'} validate={[reqiuredField]}/>
-            <button>Add article</button>
+            <button>{props.buttonText}</button>
         </form>
     );
 };
@@ -43,7 +43,7 @@ const ArticleForm = (props) => {
         addArticle(formData.title, formData.content);
     };
 
-    return <ArticleReduxForm onSubmit={onSubmit}/>;
+    return <ArticleReduxForm buttonText={props.buttonText} onSubmit={onSubmit}/>;
 };
 
 const mapDispatchToProps = {

@@ -10,10 +10,12 @@ const Articles = (props) => {
     const articlesList = props.articles.map(a => {
         return (
                 <div key={a.id}>
-                    Title:{a.title}
-                    User:{a.user.username}
-                    <NavLink to={`/article/${a.id}`}>To article</NavLink>
+                    <NavLink to={`/article/${a.id}`}>{a.title}</NavLink>
+                    <br/>
+                    User: {a.user.username}
+                    <br/>
                     {props.currentUser === a.user.username ? <button onClick={(e) => props.deleteArticle(a.id)}>Delete</button> : ''}
+                    <hr/>
                 </div>
         );
     });
@@ -21,7 +23,7 @@ const Articles = (props) => {
     return (
         <div>
             {articlesList}
-            {props.isAuth ? <ArticleForm/>: ''}
+            {props.isAuth ? <ArticleForm buttonText={'Add article'}/>: ''}
         </div>
     );
 }

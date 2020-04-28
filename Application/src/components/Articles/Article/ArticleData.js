@@ -5,10 +5,10 @@ import {Form} from "../ArticleForm/ArticleForm";
 const ArticleData = (props) => {
     return (
         <div>
-            <h1>{props.isOwner && <button onClick={props.goToEditMode}>Edit</button>}</h1>
-            Title: {props.article.title}
-            Content: {props.article.content}
+            <h5>{props.article.title}</h5>
             User: {props.article.user.username}
+            <p>{props.article.content}</p>
+            {props.isOwner && <button onClick={props.goToEditMode}>Edit</button>}
         </div>
     );
 }
@@ -26,7 +26,8 @@ const ArticleHook = (props) => {
     return (
         <div>
             {editMode
-                ? <ArticleReduxForm initialValues={{title: props.article.title, content: props.article.content}} onSubmit={onSubmit}/>
+                ? <ArticleReduxForm initialValues={{title: props.article.title, content: props.article.content}}
+                                    onSubmit={onSubmit} buttonText={'Save changes'}/>
                 : <ArticleData isOwner={props.isOwner} article={props.article} goToEditMode={() => setEditMode(true)}/>}
         </div>
     )
